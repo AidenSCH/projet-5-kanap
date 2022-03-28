@@ -3,6 +3,27 @@ let str = window.location.href;
 let url = new URL(str);
 let idProduct = url.searchParams.get("id");
 let article = "";
+getId()
+
+
+
+// testez l'id récupéré
+ function getId() { 
+let idRegExp = new RegExp('^[a-z0-9]{32}$');
+let idValidator = function(ValideId) {
+
+    if (idRegExp.test(idProduct)) {
+        getArticle()
+
+    } else{
+        alert("erreur ID")
+    }
+
+}
+
+};
+
+
 
 const colorPicked = document.getElementById("colors");
 const quantityPicked = document.getElementById("quantity");
@@ -84,8 +105,7 @@ function addToCart(article) {
         idProduit: idProduct,
         couleurProduit: choixCouleur,
         quantiteProduit: Number(choixQuantite),
-        nomProduit: article.name,
-        prixProduit: article.price,
+        nomProduit: article.name,       
         descriptionProduit: article.description,
         imgProduit: article.imageUrl,
         altImgProduit: article.altTxt

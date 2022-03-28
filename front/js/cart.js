@@ -3,11 +3,15 @@ let produitLocalStorage = JSON.parse(localStorage.getItem("produits"));
 
 const positionEmptyCart = document.getElementById("cart__items");
 
+
+
+
+
 // Si le panier est vide
 function getCart(){
 if (produitLocalStorage === null || produitLocalStorage == 0) {
-    const emptyCart = `<p>Votre panier est vide</p>`;
-    positionEmptyCart.innerHTML = emptyCart;
+    positionEmptyCart.innerHTML = `<p>Votre panier est vide</p>`;
+    
 } else {
 for (let produit in produitLocalStorage){
     // Insertion de l'élément "article"
@@ -89,6 +93,8 @@ for (let produit in produitLocalStorage){
     productSupprimer.className = "deleteItem";
     productSupprimer.innerHTML = "Supprimer";
 }
+
+
 }}
 getCart();
 
@@ -177,7 +183,7 @@ function getForm() {
 
     //Création des expressions régulières
     let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$');
-    let charRegExp = new RegExp("^[a-zA-Z ,.'-]+$");
+    let charRegExp = new RegExp("^[a-zA-Zàâäéèêëïîôöùûüç ,.'-]+$");
     let addressRegExp = new RegExp("^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)+");
 
     // Ecoute de la modification du prénom
@@ -305,8 +311,7 @@ function postForm(){
 
         fetch("http://localhost:3000/api/products/order", options)
         .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
+        .then((data) => {            
             localStorage.clear();
             localStorage.setItem("orderId", data.orderId);
 
