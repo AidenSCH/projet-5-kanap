@@ -3,32 +3,24 @@ let str = window.location.href;
 let url = new URL(str);
 let idProduct = url.searchParams.get("id");
 let article = "";
-getId()
+checkId();
 
 
 
 // testez l'id récupéré
- function getId() { 
+ function checkId() { 
 let idRegExp = new RegExp('^[a-z0-9]{32}$');
-let idValidator = function(ValideId) {
-
     if (idRegExp.test(idProduct)) {
-        getArticle()
-
+        getArticle();
     } else{
-        alert("erreur ID")
+        window.location.replace("index.html");
     }
-
-}
-
 };
 
 
 
 const colorPicked = document.getElementById("colors");
 const quantityPicked = document.getElementById("quantity");
-
-getArticle();
 
 // Récupération des articles de l'API
 function getArticle() {
